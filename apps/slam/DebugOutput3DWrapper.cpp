@@ -33,6 +33,8 @@
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
+#include <stdio.h>
+#include <boost/format.hpp>
 
 namespace lsd_slam
 {
@@ -64,11 +66,71 @@ DebugOutput3DWrapper::DebugOutput3DWrapper(int width, int height)
 	cv::imshow("Tracking_output", tracker_display);
 	cvWaitKey(10);
 	publishLvl=0;
+
+	plyout.open("c:\\temp\test.ply", std::ios::in | std::ios::out | std::ios::ate);
+
 }
+
+struct PlyVertex
+{
+	Sophus::Vector3f p;
+	uchar argb[4];
+
+	PlyVertex(const Sophus::Vector3f pos, uchar a, uchar r, uchar g, uchar b)
+		: p(pos)
+	{
+		argb[0] = a;
+		argb[1] = r;
+		argb[2] = g;
+		argb[3] = b;
+	}
+};
+
+
+class PlyWriter
+{
+public:
+	static void Write(const std::string& fn, std::vector<PlyVertex> vertices)
+	{
+		std::ofstream f;
+		f.open(fn, std::ios::out);
+	
+		// create header
+		f << "ply" << std::endl;
+		f << "format ascii 1.0" << std::endl;
+		f << "comment bla" << std::endl;
+		f << boost::format("element vertex %1%") % vertices.size() << std::endl;
+		f << "property float x" << std::endl;
+		f << "property float y" << std::endl;
+		f << "property float z" << std::endl;
+		f << "property float intensity" << std::endl;
+		f << "property uchar red" << std::endl;
+		f << "property uchar green" << std::endl;
+		f << "property uchar blue" << std::endl;
+		f << "end_header" << std::endl;
+		
+		// write vertices
+		for (auto v : vertices)
+		{
+			float x = v.p.x();
+			float y = v.p.y();
+			float z = v.p.z();
+			int a = v.argb[0];
+			int r = v.argb[1];
+			int g = v.argb[2];
+			int b = v.argb[3];
+			f << boost::format("%1% %2% %3% %4% %5% %6% %7%") % x % y % z % a % r % g % b << std::endl;
+		}
+
+		f.close();
+	}
+
+};
 
 DebugOutput3DWrapper::~DebugOutput3DWrapper()
 {
 }
+
 
 
 void DebugOutput3DWrapper::publishKeyframe(Frame* f)
@@ -93,27 +155,82 @@ void DebugOutput3DWrapper::publishKeyframe(Frame* f)
 	fMsg.width = w;
 	fMsg.height = h;
 
+	float fx = fMsg.fx;
+	float fy = fMsg.fy;
+	float cx = fMsg.cx;
+	float cy = fMsg.cy;
+
+	float fxi = 1 / fx;
+	float fyi = 1 / fy;
+	float cxi = -cx / fx;
+	float cyi = -cy / fy;
+
+	fMsg.pointcloud.resize(w*h*sizeof(InputPointDense));
+
+	InputPointDense* pc = (InputPointDense*)fMsg.pointcloud.data();
+
+	const float* idepth = f->idepth(publishLvl);
+	const float* idepthVar = f->idepthVar(publishLvl);
+	const float* color = f->image(publishLvl);
 	
+	// create vertex buffer
+	std::vector<PlyVertex> vb;
 
-	//fMsg.pointcloud.resize(w*h*sizeof(InputPointDense));
+	const Sophus::Sim3f& camToWorld = fMsg.camToWorld;
+	int idx = 0;
+	for (int y = 0; y < h; ++y)
+	{
+		for (int x = 0; x < w; ++x, ++idx)
+		{
+			pc[idx].idepth = idepth[idx];
+			pc[idx].idepth_var = idepthVar[idx];
+			pc[idx].color[0] = 255;
+			pc[idx].color[1] = color[x + y*w + 0] * 255;
+			pc[idx].color[2] = color[x + y*w + 1] * 255;
+			pc[idx].color[3] = color[x + y*w + 2] * 255;
 
-	//InputPointDense* pc = (InputPointDense*)fMsg.pointcloud.data();
+			if (idepth[idx] > 0)
+			{
+				float depth = 1 / idepth[idx];
+				float depth4 = depth*depth; depth4 *= depth4;
 
-	//const float* idepth = f->idepth(publishLvl);
-	//const float* idepthVar = f->idepthVar(publishLvl);
-	//const float* color = f->image(publishLvl);
-	//
-	//for(int idx=0;idx < w*h; idx++)
-	//{
-	//	pc[idx].idepth = idepth[idx];
-	//	pc[idx].idepth_var = idepthVar[idx];
-	//	pc[idx].color[0] = color[idx];
-	//	pc[idx].color[1] = color[idx];
-	//	pc[idx].color[2] = color[idx];
-	//	pc[idx].color[3] = color[idx];
-	//}
+				if (idepthVar[idx] * depth4 < 1E-3)
+				{
+					// transform ..
+					Sophus::Vector3f pt = camToWorld * (Sophus::Vector3f((x*fxi + cxi), (y*fyi + cyi), 1) * depth);
+					int my_minNearSupport = 4;
+					int nearSupport = 0;
+					if (my_minNearSupport > 1)
+					{
 
-	//keyframe_publisher.publish(fMsg);
+						for (int dx = -1; dx < 2; dx++)
+							for (int dy = -1; dy < 2; dy++)
+							{
+								int idx = x + dx + (y + dy)*width;
+								if (idepth[idx] > 0)
+								{
+									float diff = idepth[idx] - 1.0f / depth;
+									if (diff*diff < 2 * idepthVar[x + y*width])
+										nearSupport++;
+								}
+							}
+
+					}
+					if (nearSupport > my_minNearSupport)
+					{
+						vb.push_back(PlyVertex(pt, pc[idx].color[0], pc[idx].color[1], pc[idx].color[2], pc[idx].color[3]));
+					}
+				}
+			}
+		}
+	}
+
+	static int seq = 0;
+	PlyWriter::Write(std::string("c:\\temp\\") + (boost::format("test%1%.ply") % seq).str(), vb);
+	++seq;
+	
+	// writePointCloud(fMsg, );
+
 
 	std::cout << "PublishKeyframe" << std::endl;
 }

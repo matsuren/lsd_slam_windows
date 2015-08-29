@@ -22,6 +22,7 @@
 
 #include "lsd_slam/io_wrapper/output_3d_wrapper.h"
 #include <vector>
+#include <fstream>
 #include <opencv2/core/core.hpp>
 
 namespace lsd_slam
@@ -30,6 +31,15 @@ namespace lsd_slam
 
 class Frame;
 class KeyFrameGraph;
+
+
+struct InputPointDense
+{
+	float idepth;
+	float idepth_var;
+	unsigned char color[4];
+};
+
 
 struct KeyFrameMessage
 {
@@ -54,17 +64,9 @@ struct KeyFrameMessage
 
 	// data as InputPointDense(float idepth, float idepth_var, uchar color[4]), width x height
 	// may be empty, in that case no associated pointcloud is ever shown.
-	//InputPointDense pointcloud;
-
+	std::vector<InputPointDense> pointcloud;
 };
 
-
-struct InputPointDense
-{
-	float idepth;
-	float idepth_var;
-	unsigned char color[4];
-};
 
 struct GraphConstraint
 {
@@ -130,5 +132,7 @@ private:
 	cv::Mat tracker_display;
 
 	//ros::NodeHandle nh_;
+
+	std::fstream plyout;
 };
 }
