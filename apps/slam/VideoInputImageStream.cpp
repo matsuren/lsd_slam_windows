@@ -1,5 +1,5 @@
 #include "VideoInputImageStream.h"
-#include <cv.h>
+#include <opencv/cv.h>
 #include <boost/thread.hpp>
 #include "lsd_slam/util/undistorter.h"
 
