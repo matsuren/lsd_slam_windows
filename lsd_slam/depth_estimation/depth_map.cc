@@ -79,6 +79,8 @@ DepthMap::DepthMap(int w, int h, const Eigen::Matrix3f& K)
 	nObserve = nRegularize = nPropagate = nFillHoles = nSetDepth = 0;
 	nAvgUpdate = nAvgCreate = nAvgFinalize = 0;
 	nAvgObserve = nAvgRegularize = nAvgPropagate = nAvgFillHoles = nAvgSetDepth = 0;
+
+	referenceFrameByID_offset = -1;
 }
 
 DepthMap::~DepthMap()
@@ -1434,13 +1436,16 @@ int DepthMap::debugPlotDepthMap()
 {
 	if(activeKeyFrame == 0) return 1;
 
+	// debug plot & publish sparse version?
+	int refID = referenceFrameByID_offset;
+	if (refID == -1) {
+		printf("Illegal refID\n");
+		return 1;
+	}
+
 	cv::Mat keyFrameImage(activeKeyFrame->height(), activeKeyFrame->width(), CV_32F, const_cast<float*>(activeKeyFrameImageData));
 	keyFrameImage.convertTo(debugImageDepth, CV_8UC1);
 	cv::cvtColor(debugImageDepth, debugImageDepth, CV_GRAY2RGB);
-
-	// debug plot & publish sparse version?
-	int refID = referenceFrameByID_offset;
-
 
 	for(int y=0;y<height;y++)
 		for(int x=0;x<width;x++)
