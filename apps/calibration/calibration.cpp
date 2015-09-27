@@ -183,11 +183,11 @@ static void saveCameraParams( const string& filename,
 
     if( !rvecs.empty() || !reprojErrs.empty() )
         fs << "nframes" << (int)std::max(rvecs.size(), reprojErrs.size());
-    fs << "image_width" << imageSize.width;
-    fs << "image_height" << imageSize.height;
-    fs << "board_width" << boardSize.width;
-    fs << "board_height" << boardSize.height;
-    fs << "square_size" << squareSize;
+    fs << "image_Width" << imageSize.width;
+    fs << "image_Height" << imageSize.height;
+    fs << "board_Width" << boardSize.width;
+    fs << "board_Height" << boardSize.height;
+    fs << "square_Size" << squareSize;
 
     if( flags & CV_CALIB_FIX_ASPECT_RATIO )
         fs << "aspectRatio" << aspectRatio;
@@ -204,8 +204,8 @@ static void saveCameraParams( const string& filename,
 
     fs << "flags" << flags;
 
-    fs << "camera_matrix" << cameraMatrix;
-    fs << "distortion_coefficients" << distCoeffs;
+    fs << "Camera_Matrix" << cameraMatrix;
+    fs << "Distortion_Coefficients" << distCoeffs;
 
     fs << "avg_reprojection_error" << totalAvgErr;
     if( !reprojErrs.empty() )
