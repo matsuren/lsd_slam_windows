@@ -835,7 +835,7 @@ bool SlamSystem::doMappingIteration()
 	}
 }
 
-
+#if 0
 void SlamSystem::gtDepthInit(uchar* image, float* depth, double timeStamp, int id)
 {
 	printf("Doing GT initialization!\n");
@@ -860,6 +860,7 @@ void SlamSystem::gtDepthInit(uchar* image, float* depth, double timeStamp, int i
 
 	printf("Done GT initialization!\n");
 }
+#endif
 
 
 void SlamSystem::randomInit(uchar* image, uchar* rgbImage, double timeStamp, int id)

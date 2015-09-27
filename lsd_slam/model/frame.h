@@ -46,9 +46,9 @@ public:
 
 	Frame(int id, int width, int height, const Eigen::Matrix3f& K, double timestamp, const unsigned char* image, const unsigned char* rgbImage);
 
-	Frame(int id, int width, int height, const Eigen::Matrix3f& K, double timestamp, const unsigned char* image);
+//	Frame(int id, int width, int height, const Eigen::Matrix3f& K, double timestamp, const unsigned char* image);
 
-	Frame(int id, int width, int height, const Eigen::Matrix3f& K, double timestamp, const float* image);
+	Frame(int id, int width, int height, const Eigen::Matrix3f& K, double timestamp, const float* image, const float* rgbImage);
 
 	~Frame();
 	

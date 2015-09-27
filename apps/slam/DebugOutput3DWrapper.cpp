@@ -103,7 +103,7 @@ public:
 		f << "property float x" << std::endl;
 		f << "property float y" << std::endl;
 		f << "property float z" << std::endl;
-		f << "property float intensity" << std::endl;
+		f << "property uchar intensity" << std::endl;
 		f << "property uchar red" << std::endl;
 		f << "property uchar green" << std::endl;
 		f << "property uchar blue" << std::endl;
@@ -172,6 +172,7 @@ void DebugOutput3DWrapper::publishKeyframe(Frame* f)
 	const float* idepth = f->idepth(publishLvl);
 	const float* idepthVar = f->idepthVar(publishLvl);
 	const float* color = f->image(publishLvl);
+	const float* colorRGB = f->imageRGB(publishLvl);
 	
 	// create vertex buffer
 	std::vector<PlyVertex> vb;
@@ -184,10 +185,10 @@ void DebugOutput3DWrapper::publishKeyframe(Frame* f)
 		{
 			pc[idx].idepth = idepth[idx];
 			pc[idx].idepth_var = idepthVar[idx];
-			pc[idx].color[0] = 255;
-			pc[idx].color[1] = color[x + y*w + 0] * 255;
-			pc[idx].color[2] = color[x + y*w + 1] * 255;
-			pc[idx].color[3] = color[x + y*w + 2] * 255;
+			pc[idx].color[0] = color[x + y*w] * 255;
+			pc[idx].color[1] = colorRGB[(x + y*w) * 3 + 2] * 255;
+			pc[idx].color[2] = colorRGB[(x + y*w) * 3 + 1] * 255;
+			pc[idx].color[3] = colorRGB[(x + y*w) * 3 + 0] * 255;
 
 			if (idepth[idx] > 0)
 			{

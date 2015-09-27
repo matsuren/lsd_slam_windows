@@ -107,11 +107,13 @@ void LiveSLAMWrapper::Loop()
 		// process image
 		Util::displayImage("MyVideo", image.data);
 		newImageCallback(image.data, image.timestamp);
+#if 1
 		auto key = cvWaitKey(10); //Capture Keyboard stroke
 		if (char(key) == 27){
 			break; //If you hit ESC key loop will break.
 		}
-		
+		handleKey(key);
+#endif	
 	}
 }
 
@@ -126,7 +128,16 @@ void LiveSLAMWrapper::newImageCallback(const cv::Mat& img, Timestamp imgTime)
 		grayImg = img;
 	else
 		cvtColor(img, grayImg, CV_RGB2GRAY);
-	
+	cv::Mat rgbImg;
+	if (img.channels() == 3)
+		rgbImg = img;
+	else if (img.channels() == 4)
+		cvtColor(img, rgbImg, CV_RGBA2RGB);
+	else
+		cvtColor(img, rgbImg, CV_GRAY2RGB);
+	assert(rgbImg.isContinuous());
+	assert(rgbImg.channels() == 3);
+	Util::displayImage("MyVideo2", rgbImg);
 
 	// Assert that we work with 8 bit images
 	assert(grayImg.elemSize() == 1);
@@ -136,12 +147,12 @@ void LiveSLAMWrapper::newImageCallback(const cv::Mat& img, Timestamp imgTime)
 	// need to initialize
 	if(!isInitialized)
 	{
-		monoOdometry->randomInit(grayImg.data, img.data, imgTime.toSec(), 1);
+		monoOdometry->randomInit(grayImg.data, rgbImg.data, imgTime.toSec(), 1);
 		isInitialized = true;
 	}
 	else if(isInitialized && monoOdometry != nullptr)
 	{
-		monoOdometry->trackFrame(grayImg.data, img.data, imageSeqNumber,false,imgTime.toSec());
+		monoOdometry->trackFrame(grayImg.data, rgbImg.data, imageSeqNumber,false,imgTime.toSec());
 	}
 }
 

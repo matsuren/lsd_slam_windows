@@ -48,7 +48,7 @@ Frame::Frame(int id, int width, int height, const Eigen::Matrix3f& K, double tim
 	}
 	for(float* pt = data.imageRGB[0]; pt < maxPtRGB; pt++)
 	{
-		*pt = *rgbImage;
+		*pt = *rgbImage / 255.0f;
 		rgbImage++;
 	}
 
@@ -61,6 +61,7 @@ Frame::Frame(int id, int width, int height, const Eigen::Matrix3f& K, double tim
 
 }
 
+#if 0
 Frame::Frame(int id, int width, int height, const Eigen::Matrix3f& K, double timestamp, const unsigned char* image)
 {
 	initialize(id, width, height, K, timestamp);
@@ -81,13 +82,16 @@ Frame::Frame(int id, int width, int height, const Eigen::Matrix3f& K, double tim
 	if(enablePrintDebugInfo && printMemoryDebugInfo)
 		printf("ALLOCATED frame %d, now there are %d\n", this->id(), privateFrameAllocCount);
 }
+#endif
 
-Frame::Frame(int id, int width, int height, const Eigen::Matrix3f& K, double timestamp, const float* image)
+Frame::Frame(int id, int width, int height, const Eigen::Matrix3f& K, double timestamp, const float* image, const float* rgbImage)
 {
 	initialize(id, width, height, K, timestamp);
 	
 	data.image[0] = FrameMemory::getInstance().getFloatBuffer(data.width[0]*data.height[0]);
-	memcpy(data.image[0], image, data.width[0]*data.height[0] * sizeof(float));
+	memcpy(data.image[0], image, data.width[0] * data.height[0] * sizeof(float));
+	data.image[0] = FrameMemory::getInstance().getFloatBuffer(data.width[0] * data.height[0]*3);
+	memcpy(data.imageRGB[0], rgbImage, data.width[0] * data.height[0] * 3 * sizeof(float));
 	data.imageValid[0] = true;
 
 	privateFrameAllocCount++;
@@ -463,6 +467,7 @@ void Frame::initialize(int id, int width, int height, const Eigen::Matrix3f& K, 
 		data.idepthVarValid[level] = false;
 
 		data.image[level] = 0;
+		data.imageRGB[level] = 0;
 		data.gradients[level] = 0;
 		data.maxGradients[level] = 0;
 		data.idepth[level] = 0;
