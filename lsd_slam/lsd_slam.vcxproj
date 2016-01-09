@@ -54,7 +54,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(BOOST_DIR);$(OPENCV_DIR)include;$(OPENCV_DIR)include\opencv;$(SolutionDir)thirdparty\g2o\source;$(SolutionDir)thirdparty\g2o\source\EXTERNAL\csparse;$(SolutionDir)thirdparty\g2o\vcxproj;$(SolutionDir)thirdparty\eigen-3.2.5;$(SolutionDir)thirdparty\Sophus;$(SolutionDir)thirdparty\openFabMap\include;$(SolutionDir)thirdparty\dirent-1.20.1\include;$(ProjectDir)depth_estimation;$(ProjectDir)global_mapping;$(ProjectDir)io_wrapper;$(ProjectDir)model;$(ProjectDir)tracking;$(ProjectDir)util;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(BOOST_DIR);$(BOOST_DIR)\include\boost-1_60;$(OPENCV_DIR)include;$(OPENCV_DIR)include\opencv;$(SolutionDir)thirdparty\g2o\source;$(SolutionDir)thirdparty\g2o\source\EXTERNAL\csparse;$(SolutionDir)thirdparty\g2o\vcxproj;$(SolutionDir)thirdparty\eigen-3.2.5;$(SolutionDir)thirdparty\Sophus;$(SolutionDir)thirdparty\openFabMap\include;$(SolutionDir)thirdparty\dirent-1.20.1\include;$(ProjectDir)depth_estimation;$(ProjectDir)global_mapping;$(ProjectDir)io_wrapper;$(ProjectDir)model;$(ProjectDir)tracking;$(ProjectDir)util;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -83,7 +83,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(BOOST_DIR);$(OPENCV_DIR)include;$(OPENCV_DIR)include\opencv;$(SolutionDir)thirdparty\g2o\source;$(SolutionDir)thirdparty\g2o\source\EXTERNAL\csparse;$(SolutionDir)thirdparty\g2o\vcxproj;$(SolutionDir)thirdparty\eigen-3.2.5;$(SolutionDir)thirdparty\Sophus;$(SolutionDir)thirdparty\openFabMap\include;$(SolutionDir)thirdparty\dirent-1.20.1\include;$(ProjectDir)depth_estimation;$(ProjectDir)global_mapping;$(ProjectDir)io_wrapper;$(ProjectDir)model;$(ProjectDir)tracking;$(ProjectDir)util;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(BOOST_DIR);$(BOOST_DIR)\include\boost-1_60;$(OPENCV_DIR)include;$(OPENCV_DIR)include\opencv;$(SolutionDir)thirdparty\g2o\source;$(SolutionDir)thirdparty\g2o\source\EXTERNAL\csparse;$(SolutionDir)thirdparty\g2o\vcxproj;$(SolutionDir)thirdparty\eigen-3.2.5;$(SolutionDir)thirdparty\Sophus;$(SolutionDir)thirdparty\openFabMap\include;$(SolutionDir)thirdparty\dirent-1.20.1\include;$(ProjectDir)depth_estimation;$(ProjectDir)global_mapping;$(ProjectDir)io_wrapper;$(ProjectDir)model;$(ProjectDir)tracking;$(ProjectDir)util;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
       <FloatingPointModel>Fast</FloatingPointModel>
