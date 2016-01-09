@@ -69,10 +69,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;WINDOWS;NOMINMAX;_USE_MATH_DEFINES;CMAKE_INTDIR=\"Debug\";stuff_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;..\..\eigen-3.2.5;..\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;..\..\eigen-3.2.5;..\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -107,10 +107,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINDOWS;NOMINMAX;_USE_MATH_DEFINES;CMAKE_INTDIR=\"Release\";stuff_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;..\..\eigen-3.2.5;..\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;..\..\eigen-3.2.5;..\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -129,32 +129,32 @@
     <ProjectReference />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\filesys_tools.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\string_tools.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\color_macros.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\macros.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\misc.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\timeutil.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\command_args.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\sparse_helper.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\os_specific.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\property.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\sampler.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\unscented.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\tictoc.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\g2o_stuff_api.h" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\timeutil.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\command_args.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\sparse_helper.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\os_specific.c">
+    <ClInclude Include="..\source\g2o\stuff\filesys_tools.h" />
+    <ClInclude Include="..\source\g2o\stuff\string_tools.h" />
+    <ClInclude Include="..\source\g2o\stuff\color_macros.h" />
+    <ClInclude Include="..\source\g2o\stuff\macros.h" />
+    <ClInclude Include="..\source\g2o\stuff\misc.h" />
+    <ClInclude Include="..\source\g2o\stuff\timeutil.h" />
+    <ClInclude Include="..\source\g2o\stuff\command_args.h" />
+    <ClInclude Include="..\source\g2o\stuff\sparse_helper.h" />
+    <ClInclude Include="..\source\g2o\stuff\os_specific.h" />
+    <ClInclude Include="..\source\g2o\stuff\property.h" />
+    <ClInclude Include="..\source\g2o\stuff\sampler.h" />
+    <ClInclude Include="..\source\g2o\stuff\unscented.h" />
+    <ClInclude Include="..\source\g2o\stuff\tictoc.h" />
+    <ClInclude Include="..\source\g2o\stuff\g2o_stuff_api.h" />
+    <ClCompile Include="..\source\g2o\stuff\timeutil.cpp" />
+    <ClCompile Include="..\source\g2o\stuff\command_args.cpp" />
+    <ClCompile Include="..\source\g2o\stuff\sparse_helper.cpp" />
+    <ClCompile Include="..\source\g2o\stuff\os_specific.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\filesys_tools.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\string_tools.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\property.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\sampler.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\tictoc.cpp" />
+    <ClCompile Include="..\source\g2o\stuff\filesys_tools.cpp" />
+    <ClCompile Include="..\source\g2o\stuff\string_tools.cpp" />
+    <ClCompile Include="..\source\g2o\stuff\property.cpp" />
+    <ClCompile Include="..\source\g2o\stuff\sampler.cpp" />
+    <ClCompile Include="..\source\g2o\stuff\tictoc.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

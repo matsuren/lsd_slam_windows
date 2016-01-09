@@ -69,10 +69,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;WINDOWS;NOMINMAX;_USE_MATH_DEFINES;CMAKE_INTDIR=\"Debug\";solver_csparse_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;..\..\eigen-3.2.5;..\build;..\source\EXTERNAL\csparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;..\..\eigen-3.2.5;..\build;..\source\EXTERNAL\csparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -108,10 +108,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINDOWS;NOMINMAX;_USE_MATH_DEFINES;CMAKE_INTDIR=\"Release\";solver_csparse_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;..\..\eigen-3.2.5;..\build;..\source\EXTERNAL\csparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;..\..\eigen-3.2.5;..\build;..\source\EXTERNAL\csparse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -130,9 +130,9 @@
     <ProjectReference />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\solvers\csparse\linear_solver_csparse.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\solvers\csparse\g2o_csparse_api.h" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\solvers\csparse\solver_csparse.cpp" />
+    <ClInclude Include="..\source\g2o\solvers\csparse\linear_solver_csparse.h" />
+    <ClInclude Include="..\source\g2o\solvers\csparse\g2o_csparse_api.h" />
+    <ClCompile Include="..\source\g2o\solvers\csparse\solver_csparse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="core.vcxproj">

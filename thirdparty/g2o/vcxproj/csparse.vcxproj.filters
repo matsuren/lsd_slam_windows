@@ -1,162 +1,162 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_add.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_add.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_amd.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_amd.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_chol.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_chol.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_cholsol.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_cholsol.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_compress.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_compress.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_counts.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_counts.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_cumsum.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_cumsum.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_dfs.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_dfs.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_dmperm.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_dmperm.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_droptol.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_droptol.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_dropzeros.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_dropzeros.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_dupl.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_dupl.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_entry.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_entry.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_ereach.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_ereach.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_etree.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_etree.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_fkeep.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_fkeep.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_gaxpy.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_gaxpy.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_happly.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_happly.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_house.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_house.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_ipvec.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_ipvec.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_leaf.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_leaf.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_load.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_load.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_lsolve.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_lsolve.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_ltsolve.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_ltsolve.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_lu.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_lu.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_lusol.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_lusol.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_malloc.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_malloc.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_maxtrans.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_maxtrans.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_multiply.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_multiply.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_norm.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_norm.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_permute.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_permute.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_pinv.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_pinv.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_post.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_post.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_print.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_print.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_pvec.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_pvec.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_qr.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_qr.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_qrsol.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_qrsol.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_randperm.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_randperm.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_reach.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_reach.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_scatter.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_scatter.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_scc.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_scc.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_schol.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_schol.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_spsolve.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_spsolve.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_sqr.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_sqr.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_symperm.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_symperm.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_tdfs.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_tdfs.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_transpose.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_transpose.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_updown.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_updown.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_usolve.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_usolve.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_util.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_util.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_utsolve.c">
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_utsolve.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_api.h">
+    <ClInclude Include="..\source\EXTERNAL\csparse\cs_api.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

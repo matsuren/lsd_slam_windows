@@ -67,10 +67,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;WINDOWS;NOMINMAX;_USE_MATH_DEFINES;CMAKE_INTDIR=\"Debug\";csparse_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;..\..\eigen-3.2.5;..\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;..\..\eigen-3.2.5;..\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -105,10 +105,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINDOWS;NOMINMAX;_USE_MATH_DEFINES;CMAKE_INTDIR=\"Release\";csparse_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;..\..\eigen-3.2.5;..\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;..\..\eigen-3.2.5;..\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -126,58 +126,58 @@
     <ProjectReference />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_api.h" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_add.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_amd.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_chol.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_cholsol.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_compress.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_counts.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_cumsum.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_dfs.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_dmperm.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_droptol.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_dropzeros.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_dupl.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_entry.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_ereach.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_etree.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_fkeep.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_gaxpy.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_happly.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_house.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_ipvec.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_leaf.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_load.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_lsolve.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_ltsolve.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_lu.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_lusol.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_malloc.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_maxtrans.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_multiply.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_norm.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_permute.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_pinv.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_post.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_print.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_pvec.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_qr.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_qrsol.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_randperm.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_reach.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_scatter.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_scc.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_schol.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_spsolve.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_sqr.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_symperm.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_tdfs.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_transpose.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_updown.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_usolve.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_util.c" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\EXTERNAL\csparse\cs_utsolve.c" />
+    <ClInclude Include="..\source\EXTERNAL\csparse\cs_api.h" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_add.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_amd.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_chol.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_cholsol.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_compress.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_counts.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_cumsum.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_dfs.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_dmperm.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_droptol.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_dropzeros.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_dupl.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_entry.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_ereach.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_etree.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_fkeep.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_gaxpy.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_happly.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_house.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_ipvec.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_leaf.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_load.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_lsolve.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_ltsolve.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_lu.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_lusol.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_malloc.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_maxtrans.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_multiply.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_norm.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_permute.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_pinv.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_post.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_print.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_pvec.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_qr.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_qrsol.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_randperm.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_reach.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_scatter.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_scc.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_schol.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_spsolve.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_sqr.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_symperm.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_tdfs.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_transpose.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_updown.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_usolve.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_util.c" />
+    <ClCompile Include="..\source\EXTERNAL\csparse\cs_utsolve.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

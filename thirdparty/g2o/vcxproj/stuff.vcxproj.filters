@@ -1,75 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\timeutil.cpp">
+    <ClCompile Include="..\source\g2o\stuff\timeutil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\command_args.cpp">
+    <ClCompile Include="..\source\g2o\stuff\command_args.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\sparse_helper.cpp">
+    <ClCompile Include="..\source\g2o\stuff\sparse_helper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\os_specific.c">
+    <ClCompile Include="..\source\g2o\stuff\os_specific.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\filesys_tools.cpp">
+    <ClCompile Include="..\source\g2o\stuff\filesys_tools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\string_tools.cpp">
+    <ClCompile Include="..\source\g2o\stuff\string_tools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\property.cpp">
+    <ClCompile Include="..\source\g2o\stuff\property.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\sampler.cpp">
+    <ClCompile Include="..\source\g2o\stuff\sampler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\tictoc.cpp">
+    <ClCompile Include="..\source\g2o\stuff\tictoc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\filesys_tools.h">
+    <ClInclude Include="..\source\g2o\stuff\filesys_tools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\string_tools.h">
+    <ClInclude Include="..\source\g2o\stuff\string_tools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\color_macros.h">
+    <ClInclude Include="..\source\g2o\stuff\color_macros.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\macros.h">
+    <ClInclude Include="..\source\g2o\stuff\macros.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\misc.h">
+    <ClInclude Include="..\source\g2o\stuff\misc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\timeutil.h">
+    <ClInclude Include="..\source\g2o\stuff\timeutil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\command_args.h">
+    <ClInclude Include="..\source\g2o\stuff\command_args.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\sparse_helper.h">
+    <ClInclude Include="..\source\g2o\stuff\sparse_helper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\os_specific.h">
+    <ClInclude Include="..\source\g2o\stuff\os_specific.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\property.h">
+    <ClInclude Include="..\source\g2o\stuff\property.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\sampler.h">
+    <ClInclude Include="..\source\g2o\stuff\sampler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\unscented.h">
+    <ClInclude Include="..\source\g2o\stuff\unscented.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\tictoc.h">
+    <ClInclude Include="..\source\g2o\stuff\tictoc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\stuff\g2o_stuff_api.h">
+    <ClInclude Include="..\source\g2o\stuff\g2o_stuff_api.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

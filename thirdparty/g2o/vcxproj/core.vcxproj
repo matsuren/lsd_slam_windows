@@ -69,10 +69,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;WINDOWS;NOMINMAX;_USE_MATH_DEFINES;CMAKE_INTDIR=\"Debug\";core_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;..\..\eigen-3.2.5;..\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;..\..\eigen-3.2.5;..\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -108,10 +108,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WINDOWS;NOMINMAX;_USE_MATH_DEFINES;CMAKE_INTDIR=\"Release\";core_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;..\..\eigen-3.2.5;..\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\code\lsd_slam_windows\thirdparty\g2o\source;C:\code\lsd_slam_windows\thirdparty\eigen-3.2.5;C:\code\lsd_slam_windows\thirdparty\g2o\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\source;..\..\eigen-3.2.5;..\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -129,74 +129,74 @@
     <ProjectReference />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\base_edge.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\base_binary_edge.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\base_binary_edge.hpp" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\hyper_graph_action.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\base_multi_edge.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\base_multi_edge.hpp" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\hyper_graph.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\base_unary_edge.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\linear_solver.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\base_unary_edge.hpp" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\base_vertex.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\marginal_covariance_cholesky.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\base_vertex.hpp" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\matrix_structure.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\batch_stats.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\openmp_mutex.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\block_solver.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\block_solver.hpp" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\parameter.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\cache.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\optimizable_graph.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\solver.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\creators.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\optimization_algorithm_factory.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\estimate_propagator.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\optimization_algorithm_property.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\factory.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\sparse_block_matrix.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\sparse_block_matrix.hpp" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\sparse_optimizer.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\hyper_dijkstra.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\parameter_container.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\optimization_algorithm.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\optimization_algorithm_with_hessian.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\optimization_algorithm_gauss_newton.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\optimization_algorithm_levenberg.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\optimization_algorithm_dogleg.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\sparse_optimizer_terminate_action.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\jacobian_workspace.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\robust_kernel.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\robust_kernel_impl.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\robust_kernel_factory.h" />
-    <ClInclude Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\g2o_core_api.h" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\hyper_graph_action.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\hyper_graph.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\marginal_covariance_cholesky.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\matrix_structure.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\batch_stats.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\parameter.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\cache.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\optimizable_graph.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\solver.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\optimization_algorithm_factory.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\estimate_propagator.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\factory.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\sparse_optimizer.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\hyper_dijkstra.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\parameter_container.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\optimization_algorithm.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\optimization_algorithm_with_hessian.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\optimization_algorithm_gauss_newton.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\optimization_algorithm_levenberg.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\optimization_algorithm_dogleg.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\sparse_optimizer_terminate_action.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\jacobian_workspace.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\robust_kernel.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\robust_kernel_impl.cpp" />
-    <ClCompile Include="C:\code\lsd_slam_windows\thirdparty\g2o\source\g2o\core\robust_kernel_factory.cpp" />
+    <ClInclude Include="..\source\g2o\core\base_edge.h" />
+    <ClInclude Include="..\source\g2o\core\base_binary_edge.h" />
+    <ClInclude Include="..\source\g2o\core\base_binary_edge.hpp" />
+    <ClInclude Include="..\source\g2o\core\hyper_graph_action.h" />
+    <ClInclude Include="..\source\g2o\core\base_multi_edge.h" />
+    <ClInclude Include="..\source\g2o\core\base_multi_edge.hpp" />
+    <ClInclude Include="..\source\g2o\core\hyper_graph.h" />
+    <ClInclude Include="..\source\g2o\core\base_unary_edge.h" />
+    <ClInclude Include="..\source\g2o\core\linear_solver.h" />
+    <ClInclude Include="..\source\g2o\core\base_unary_edge.hpp" />
+    <ClInclude Include="..\source\g2o\core\base_vertex.h" />
+    <ClInclude Include="..\source\g2o\core\marginal_covariance_cholesky.h" />
+    <ClInclude Include="..\source\g2o\core\base_vertex.hpp" />
+    <ClInclude Include="..\source\g2o\core\matrix_structure.h" />
+    <ClInclude Include="..\source\g2o\core\batch_stats.h" />
+    <ClInclude Include="..\source\g2o\core\openmp_mutex.h" />
+    <ClInclude Include="..\source\g2o\core\block_solver.h" />
+    <ClInclude Include="..\source\g2o\core\block_solver.hpp" />
+    <ClInclude Include="..\source\g2o\core\parameter.h" />
+    <ClInclude Include="..\source\g2o\core\cache.h" />
+    <ClInclude Include="..\source\g2o\core\optimizable_graph.h" />
+    <ClInclude Include="..\source\g2o\core\solver.h" />
+    <ClInclude Include="..\source\g2o\core\creators.h" />
+    <ClInclude Include="..\source\g2o\core\optimization_algorithm_factory.h" />
+    <ClInclude Include="..\source\g2o\core\estimate_propagator.h" />
+    <ClInclude Include="..\source\g2o\core\optimization_algorithm_property.h" />
+    <ClInclude Include="..\source\g2o\core\factory.h" />
+    <ClInclude Include="..\source\g2o\core\sparse_block_matrix.h" />
+    <ClInclude Include="..\source\g2o\core\sparse_block_matrix.hpp" />
+    <ClInclude Include="..\source\g2o\core\sparse_optimizer.h" />
+    <ClInclude Include="..\source\g2o\core\hyper_dijkstra.h" />
+    <ClInclude Include="..\source\g2o\core\parameter_container.h" />
+    <ClInclude Include="..\source\g2o\core\optimization_algorithm.h" />
+    <ClInclude Include="..\source\g2o\core\optimization_algorithm_with_hessian.h" />
+    <ClInclude Include="..\source\g2o\core\optimization_algorithm_gauss_newton.h" />
+    <ClInclude Include="..\source\g2o\core\optimization_algorithm_levenberg.h" />
+    <ClInclude Include="..\source\g2o\core\optimization_algorithm_dogleg.h" />
+    <ClInclude Include="..\source\g2o\core\sparse_optimizer_terminate_action.h" />
+    <ClInclude Include="..\source\g2o\core\jacobian_workspace.h" />
+    <ClInclude Include="..\source\g2o\core\robust_kernel.h" />
+    <ClInclude Include="..\source\g2o\core\robust_kernel_impl.h" />
+    <ClInclude Include="..\source\g2o\core\robust_kernel_factory.h" />
+    <ClInclude Include="..\source\g2o\core\g2o_core_api.h" />
+    <ClCompile Include="..\source\g2o\core\hyper_graph_action.cpp" />
+    <ClCompile Include="..\source\g2o\core\hyper_graph.cpp" />
+    <ClCompile Include="..\source\g2o\core\marginal_covariance_cholesky.cpp" />
+    <ClCompile Include="..\source\g2o\core\matrix_structure.cpp" />
+    <ClCompile Include="..\source\g2o\core\batch_stats.cpp" />
+    <ClCompile Include="..\source\g2o\core\parameter.cpp" />
+    <ClCompile Include="..\source\g2o\core\cache.cpp" />
+    <ClCompile Include="..\source\g2o\core\optimizable_graph.cpp" />
+    <ClCompile Include="..\source\g2o\core\solver.cpp" />
+    <ClCompile Include="..\source\g2o\core\optimization_algorithm_factory.cpp" />
+    <ClCompile Include="..\source\g2o\core\estimate_propagator.cpp" />
+    <ClCompile Include="..\source\g2o\core\factory.cpp" />
+    <ClCompile Include="..\source\g2o\core\sparse_optimizer.cpp" />
+    <ClCompile Include="..\source\g2o\core\hyper_dijkstra.cpp" />
+    <ClCompile Include="..\source\g2o\core\parameter_container.cpp" />
+    <ClCompile Include="..\source\g2o\core\optimization_algorithm.cpp" />
+    <ClCompile Include="..\source\g2o\core\optimization_algorithm_with_hessian.cpp" />
+    <ClCompile Include="..\source\g2o\core\optimization_algorithm_gauss_newton.cpp" />
+    <ClCompile Include="..\source\g2o\core\optimization_algorithm_levenberg.cpp" />
+    <ClCompile Include="..\source\g2o\core\optimization_algorithm_dogleg.cpp" />
+    <ClCompile Include="..\source\g2o\core\sparse_optimizer_terminate_action.cpp" />
+    <ClCompile Include="..\source\g2o\core\jacobian_workspace.cpp" />
+    <ClCompile Include="..\source\g2o\core\robust_kernel.cpp" />
+    <ClCompile Include="..\source\g2o\core\robust_kernel_impl.cpp" />
+    <ClCompile Include="..\source\g2o\core\robust_kernel_factory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="stuff.vcxproj">
