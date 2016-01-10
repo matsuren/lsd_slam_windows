@@ -25,7 +25,9 @@
 #include <string>
 #include <unordered_set>
 
-#include <boost/thread.hpp>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
 
 namespace lsd_slam
 {
@@ -38,11 +40,11 @@ namespace Util
 
 
 	std::unordered_set<std::string> openWindows;
-	boost::mutex openCVdisplayMutex;
-	boost::condition_variable  openCVdisplaySignal;
+	std::mutex openCVdisplayMutex;
+	std::condition_variable  openCVdisplaySignal;
 
 
-	boost::thread* imageDisplayThread = 0;
+	std::thread* imageDisplayThread = 0;
 	std::vector<DisplayImageObject> displayQueue;
 	bool imageThreadKeepRunning = false;
 
@@ -50,7 +52,7 @@ namespace Util
 void displayThreadLoop()
 {
 	printf("started image display thread!\n");
-	boost::unique_lock<boost::mutex> lock(openCVdisplayMutex);
+	std::unique_lock<std::mutex> lock(openCVdisplayMutex);
 	while(imageThreadKeepRunning)
 	{
 		openCVdisplaySignal.wait(lock);
@@ -81,7 +83,7 @@ void displayThreadLoop()
 void makeDisplayThread()
 {
 	imageThreadKeepRunning = true;
-	imageDisplayThread = new boost::thread(&displayThreadLoop);
+	imageDisplayThread = new std::thread(&displayThreadLoop);
 }
 void displayImage(const char* windowName, const cv::Mat& image, bool autoSize)
 {
@@ -90,7 +92,7 @@ void displayImage(const char* windowName, const cv::Mat& image, bool autoSize)
 		if(imageDisplayThread == 0)
 			makeDisplayThread();
 
-		boost::unique_lock<boost::mutex> lock(openCVdisplayMutex);
+		std::unique_lock<std::mutex> lock(openCVdisplayMutex);
 		displayQueue.push_back(DisplayImageObject());
 		displayQueue.back().autoSize = autoSize;
 		displayQueue.back().img = image.clone();
@@ -127,7 +129,7 @@ int waitKeyNoConsume(int milliseconds)
 
 void closeAllWindows()
 {
-	boost::unique_lock<boost::mutex> lock(openCVdisplayMutex);
+	std::unique_lock<std::mutex> lock(openCVdisplayMutex);
 
 	if(useImageDisplayThread)
 	{

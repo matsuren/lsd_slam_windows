@@ -113,12 +113,12 @@ SlamSystem::SlamSystem(int w, int h, Eigen::Matrix3f K, bool enableSLAM)
 	depthMapScreenshotFlag = false;
 	lastTrackingClosenessScore = 0;
 
-	thread_mapping = boost::thread(&SlamSystem::mappingThreadLoop, this);
+	thread_mapping = std::thread(&SlamSystem::mappingThreadLoop, this);
 
 	if(SLAMEnabled)
 	{
-		thread_constraint_search = boost::thread(&SlamSystem::constraintSearchThreadLoop, this);
-		thread_optimization = boost::thread(&SlamSystem::optimizationThreadLoop, this);
+		thread_constraint_search = std::thread(&SlamSystem::constraintSearchThreadLoop, this);
+		thread_optimization = std::thread(&SlamSystem::optimizationThreadLoop, this);
 	}
 
 
@@ -213,8 +213,8 @@ void SlamSystem::mappingThreadLoop()
 	{
 		if (!doMappingIteration())
 		{
-			boost::unique_lock<boost::mutex> lock(unmappedTrackedFramesMutex);
-			unmappedTrackedFramesSignal.timed_wait(lock,boost::posix_time::milliseconds(200));	// slight chance of deadlock otherwise
+			std::unique_lock<std::mutex> lock(unmappedTrackedFramesMutex);
+			unmappedTrackedFramesSignal.wait_for(lock,std::chrono::milliseconds(200));	// slight chance of deadlock otherwise
 			lock.unlock();
 		}
 
@@ -257,7 +257,7 @@ void SlamSystem::finalize()
 	{
 		std::this_thread::sleep_for(std::chrono::microseconds(200000));
 	}
-	boost::unique_lock<boost::mutex> lock(newFrameMappedMutex);
+	std::unique_lock<std::mutex> lock(newFrameMappedMutex);
 	newFrameMappedSignal.wait(lock);
 	newFrameMappedSignal.wait(lock);
 
@@ -270,7 +270,7 @@ void SlamSystem::constraintSearchThreadLoop()
 {
 	printf("Started  constraint search thread!\n");
 	
-	boost::unique_lock<boost::mutex> lock(newKeyFrameMutex);
+	std::unique_lock<std::mutex> lock(newKeyFrameMutex);
 	int failedToRetrack = 0;
 
 	while(keepRunning)
@@ -308,7 +308,7 @@ void SlamSystem::constraintSearchThreadLoop()
 			{
 				if(enablePrintDebugInfo && printConstraintSearchInfo)
 					printf("nothing to re-track... waiting.\n");
-				newKeyFrameCreatedSignal.timed_wait(lock,boost::posix_time::milliseconds(500));
+				newKeyFrameCreatedSignal.wait_for(lock,std::chrono::milliseconds(500));
 
 			}
 		}
@@ -367,9 +367,9 @@ void SlamSystem::optimizationThreadLoop()
 
 	while(keepRunning)
 	{
-		boost::unique_lock<boost::mutex> lock(newConstraintMutex);
+		std::unique_lock<std::mutex> lock(newConstraintMutex);
 		if(!newConstraintAdded)
-			newConstraintCreatedSignal.timed_wait(lock,boost::posix_time::milliseconds(2000));	// slight chance of deadlock otherwise
+			newConstraintCreatedSignal.wait_for(lock,std::chrono::milliseconds(2000));	// slight chance of deadlock otherwise
 		newConstraintAdded = false;
 		lock.unlock();
 
@@ -1039,7 +1039,7 @@ void SlamSystem::trackFrame(uchar* image, uchar* rgbImage, unsigned int frameID,
 	// implement blocking
 	if(blockUntilMapped && trackingIsGood)
 	{
-		boost::unique_lock<boost::mutex> lock(newFrameMappedMutex);
+		std::unique_lock<std::mutex> lock(newFrameMappedMutex);
 		while(unmappedTrackedFrames.size() > 0)
 		{
 			//printf("TRACKING IS BLOCKING, waiting for %d frames to finish mapping.\n", (int)unmappedTrackedFrames.size());
@@ -1681,7 +1681,7 @@ bool SlamSystem::optimizationIteration(int itsPerTry, float minChange)
 
 void SlamSystem::optimizeGraph()
 {
-	boost::unique_lock<boost::mutex> g2oLock(g2oGraphAccessMutex);
+	std::unique_lock<std::mutex> g2oLock(g2oGraphAccessMutex);
 	keyFrameGraph->optimize(1000);
 	g2oLock.unlock();
 	mergeOptimizationOffset();

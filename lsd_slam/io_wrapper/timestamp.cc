@@ -30,7 +30,7 @@ namespace lsd_slam
 
 
 const std::chrono::steady_clock::time_point Timestamp::startupTimePoint = std::chrono::steady_clock::now();
-boost::mutex Timestamp::localtimeMutex;
+std::mutex Timestamp::localtimeMutex;
 
 Timestamp::Timestamp()
 {
@@ -46,7 +46,7 @@ std::string Timestamp::toDateStr(const char* format) const
 	auto in_time_t = std::chrono::system_clock::to_time_t(systemTimePoint);
 	struct tm* loc_time_t;
 	
-	boost::unique_lock<boost::mutex> lock(localtimeMutex);
+	std::unique_lock<std::mutex> lock(localtimeMutex);
 	// localtime is not re-entrant.
 	loc_time_t = std::localtime(&in_time_t);
 	char buffer[128];

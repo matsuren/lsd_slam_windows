@@ -23,7 +23,7 @@
 
 #include <string>
 #include <chrono>
-#include <boost/thread/mutex.hpp>
+#include <mutex>
 
 
 
@@ -78,7 +78,7 @@ private:
 	std::chrono::system_clock::time_point systemTimePoint;
 	
 	static const std::chrono::steady_clock::time_point startupTimePoint;
-	static boost::mutex localtimeMutex;
+	static std::mutex localtimeMutex;
 };
 }
 #endif

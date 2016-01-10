@@ -62,14 +62,14 @@ void TrackingReference::clearAll()
 }
 TrackingReference::~TrackingReference()
 {
-	boost::unique_lock<boost::mutex> lock(accessMutex);
+	std::unique_lock<std::mutex> lock(accessMutex);
 	invalidate();
 	releaseAll();
 }
 
 void TrackingReference::importFrame(Frame* sourceKF)
 {
-	boost::unique_lock<boost::mutex> lock(accessMutex);
+	std::unique_lock<std::mutex> lock(accessMutex);
 	keyframeLock = sourceKF->getActiveLock();
 	keyframe = sourceKF;
 	frameID=keyframe->id();
@@ -95,7 +95,7 @@ void TrackingReference::invalidate()
 void TrackingReference::makePointCloud(int level)
 {
 	assert(keyframe != 0);
-	boost::unique_lock<boost::mutex> lock(accessMutex);
+	std::unique_lock<std::mutex> lock(accessMutex);
 
 	if(numData[level] > 0)
 		return;	// already exists.

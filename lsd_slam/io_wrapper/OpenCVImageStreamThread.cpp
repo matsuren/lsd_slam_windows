@@ -21,7 +21,7 @@
 #include "OpenCVImageStreamThread.h"
 //#include <ros/callback_queue.h>
 
-#include <boost/thread.hpp>
+#include <thread>
 #include <opencv2/highgui/highgui.hpp>
 
 //#include "cv_bridge/cv_bridge.h"
@@ -97,7 +97,7 @@ void OpenCVImageStreamThread::setCalibration(std::string file)
 
 void OpenCVImageStreamThread::run()
 {
-	boost::thread thread(boost::ref(*this));
+	std::thread thread(std::ref(*this));
 }
 
 void OpenCVImageStreamThread::operator()()

@@ -34,7 +34,6 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 #include <stdio.h>
-#include <boost/format.hpp>
 
 namespace lsd_slam
 {
@@ -99,7 +98,7 @@ public:
 		f << "ply" << std::endl;
 		f << "format ascii 1.0" << std::endl;
 		f << "comment bla" << std::endl;
-		f << boost::format("element vertex %1%") % vertices.size() << std::endl;
+		f << "element vertex " << vertices.size() << std::endl;
 		f << "property float x" << std::endl;
 		f << "property float y" << std::endl;
 		f << "property float z" << std::endl;
@@ -119,7 +118,7 @@ public:
 			int r = v.argb[1];
 			int g = v.argb[2];
 			int b = v.argb[3];
-			f << boost::format("%1% %2% %3% %4% %5% %6% %7%") % x % y % z % a % r % g % b << std::endl;
+			f << x << " " << y << " " << z << " " << a << " " << r << " " << g << " " << b << std::endl;
 		}
 
 		f.close();
@@ -138,7 +137,7 @@ void DebugOutput3DWrapper::publishKeyframe(Frame* f)
 	KeyFrameMessage fMsg;
 
 
-	boost::shared_lock<boost::shared_mutex> lock = f->getActiveLock();
+	std::shared_lock<std::shared_timed_mutex> lock = f->getActiveLock();
 
 	fMsg.id = f->id();
 	fMsg.time = f->timestamp();
@@ -227,7 +226,7 @@ void DebugOutput3DWrapper::publishKeyframe(Frame* f)
 	}
 
 	static int seq = 0;
-	PlyWriter::Write(std::string("c:\\temp\\") + (boost::format("test%1%.ply") % seq).str(), vb);
+	PlyWriter::Write(std::string("c:\\temp\\") + "test" + std::to_string(seq) + ".ply", vb);
 	++seq;
 	
 	// writePointCloud(fMsg, );

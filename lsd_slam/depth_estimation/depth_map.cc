@@ -33,6 +33,7 @@
 #include "io_wrapper/image_display.h"
 #include "global_mapping/key_frame_graph.h"
 
+using namespace std::placeholders;
 
 namespace lsd_slam
 {
@@ -150,7 +151,7 @@ void DepthMap::observeDepthRow(int yMin, int yMax, RunningStats* stats)
 void DepthMap::observeDepth()
 {
 
-	threadReducer.reduce(boost::bind(&DepthMap::observeDepthRow, this, _1, _2, _3), 3, height-3, 10);
+	threadReducer.reduce(std::bind(&DepthMap::observeDepthRow, this, _1, _2, _3), 3, height-3, 10);
 
 	if(enablePrintDebugInfo && printObserveStatistics)
 	{
@@ -714,7 +715,7 @@ void DepthMap::regularizeDepthMapFillHoles()
 	runningStats.num_reg_created=0;
 
 	memcpy(otherDepthMap,currentDepthMap,width*height*sizeof(DepthMapPixelHypothesis));
-	threadReducer.reduce(boost::bind(&DepthMap::regularizeDepthMapFillHolesRow, this, _1, _2, _3), 3, height-2, 10);
+	threadReducer.reduce(std::bind(&DepthMap::regularizeDepthMapFillHolesRow, this, _1, _2, _3), 3, height-2, 10);
 	if(enablePrintDebugInfo && printFillHolesStatistics)
 		printf("FillHoles (discreteDepth): %d created\n",
 				runningStats.num_reg_created);
@@ -745,7 +746,7 @@ void DepthMap::buildRegIntegralBufferRow1(int yMin, int yMax, RunningStats* stat
 
 void DepthMap::buildRegIntegralBuffer()
 {
-	threadReducer.reduce(boost::bind(&DepthMap::buildRegIntegralBufferRow1, this, _1, _2,_3), 0, height);
+	threadReducer.reduce(std::bind(&DepthMap::buildRegIntegralBufferRow1, this, _1, _2,_3), 0, height);
 
 	int* validityIntegralBufferPT = validityIntegralBuffer;
 	int* validityIntegralBufferPT_T = validityIntegralBuffer+width;
@@ -866,9 +867,9 @@ void DepthMap::regularizeDepthMap(bool removeOcclusions, int validityTH)
 
 
 	if(removeOcclusions)
-		threadReducer.reduce(boost::bind(&DepthMap::regularizeDepthMapRow<true>, this, validityTH, _1, _2, _3), 2, height-2, 10);
+		threadReducer.reduce(std::bind(&DepthMap::regularizeDepthMapRow<true>, this, validityTH, _1, _2, _3), 2, height-2, 10);
 	else
-		threadReducer.reduce(boost::bind(&DepthMap::regularizeDepthMapRow<false>, this, validityTH, _1, _2, _3), 2, height-2, 10);
+		threadReducer.reduce(std::bind(&DepthMap::regularizeDepthMapRow<false>, this, validityTH, _1, _2, _3), 2, height-2, 10);
 
 
 	if(enablePrintDebugInfo && printRegularizeStatistics)
@@ -1239,7 +1240,7 @@ void DepthMap::createKeyFrame(Frame* new_keyframe)
 	assert(new_keyframe->hasTrackingParent());
 
 	//boost::shared_lock<boost::shared_mutex> lock = activeKeyFrame->getActiveLock();
-	boost::shared_lock<boost::shared_mutex> lock2 = new_keyframe->getActiveLock();
+	std::shared_lock<std::shared_timed_mutex> lock2 = new_keyframe->getActiveLock();
 
 	timepoint_t tv_start_all, tv_end_all;
 	// gettimeofday(&tv_start_all, NULL);

@@ -1,6 +1,6 @@
 #include "VideoInputImageStream.h"
 #include <opencv/cv.h>
-#include <boost/thread.hpp>
+#include <thread>
 #include "lsd_slam/util/undistorter.h"
 
 
@@ -23,7 +23,7 @@ VideoInputImageStream::~VideoInputImageStream()
 
 void VideoInputImageStream::run()
 {
-	boost::thread thread(boost::ref(*this));
+	auto thread = new std::thread(std::ref(*this));
 }
 
 

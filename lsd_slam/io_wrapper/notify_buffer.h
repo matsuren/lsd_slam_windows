@@ -22,8 +22,8 @@
 #define _OBJECT_BUFFER_HPP_
 
 #include <deque>
-#include <boost/thread/recursive_mutex.hpp>
-#include <boost/thread/condition.hpp>
+#include <mutex>
+#include <condition_variable>
 
 
 
@@ -45,7 +45,7 @@ public:
 	}
 	
 protected:
-	boost::condition notifyCondition;
+	std::condition_variable_any notifyCondition;
 };
 
 /**
@@ -93,7 +93,7 @@ public:
 	 */
 	bool pushBack(const T& object)
 	{
-		boost::unique_lock<boost::recursive_mutex> lock(bufferMutex);
+		std::unique_lock<std::recursive_mutex> lock(bufferMutex);
 		
 		if (static_cast<int>(queue.size()) >= bufferSize) {
 			return false;
@@ -114,7 +114,7 @@ public:
 	 */
 	int size()
 	{
-		boost::unique_lock<boost::recursive_mutex> lock(bufferMutex);
+		std::unique_lock<std::recursive_mutex> lock(bufferMutex);
 		return queue.size();
 	}
 	
@@ -122,7 +122,7 @@ public:
 	 * Returns a copy of the first object.
 	 */
 	T first() {
-		boost::unique_lock<boost::recursive_mutex> lock(bufferMutex);
+		std::unique_lock<std::recursive_mutex> lock(bufferMutex);
 		return queue.front();
 	}
 	
@@ -132,7 +132,7 @@ public:
 	 * If there is no object in the queue, blocks until one is available.
 	 */
 	T popFront() {
-		boost::unique_lock<boost::recursive_mutex> lock(bufferMutex);
+		std::unique_lock<std::recursive_mutex> lock(bufferMutex);
 		
 		// Block in case there is no object
 		while (!(queue.size() > 0)) {
@@ -148,13 +148,13 @@ public:
 	 * Returns the buffer access mutex. Must be locked when checking size()
 	 * and waiting if size() == 0.
 	 */
-	boost::recursive_mutex& getMutex() {
+	std::recursive_mutex& getMutex() {
 		return bufferMutex;
 	}
 	
 private:
-	boost::recursive_mutex bufferMutex;
-	boost::condition bufferNonEmptyCondition;
+	std::recursive_mutex bufferMutex;
+	std::condition_variable_any bufferNonEmptyCondition;
 	
 	int bufferSize;
 	std::deque< T > queue;

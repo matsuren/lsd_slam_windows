@@ -122,7 +122,7 @@ float SE3Tracker::checkPermaRefOverlap(
 		const SE3& referenceToFrameOrg)
 {
 	Sophus::SE3f referenceToFrame = referenceToFrameOrg.cast<float>();
-	boost::unique_lock<boost::mutex> lock2 = boost::unique_lock<boost::mutex>(reference->permaRef_mutex);
+	std::unique_lock<std::mutex> lock2 = std::unique_lock<std::mutex>(reference->permaRef_mutex);
 
 	int w2 = reference->width(QUICK_KF_CHECK_LVL)-1;
 	int h2 = reference->height(QUICK_KF_CHECK_LVL)-1;
@@ -166,8 +166,8 @@ SE3 SE3Tracker::trackFrameOnPermaref(
 
 	Sophus::SE3f referenceToFrame = referenceToFrameOrg.cast<float>();
 
-	boost::shared_lock<boost::shared_mutex> lock = frame->getActiveLock();
-	boost::unique_lock<boost::mutex> lock2 = boost::unique_lock<boost::mutex>(reference->permaRef_mutex);
+	std::shared_lock<std::shared_timed_mutex> lock = frame->getActiveLock();
+	std::unique_lock<std::mutex> lock2 = std::unique_lock<std::mutex>(reference->permaRef_mutex);
 
 	affineEstimation_a = 1; affineEstimation_b = 0;
 
@@ -282,7 +282,7 @@ SE3 SE3Tracker::trackFrame(
 		const SE3& frameToReference_initialEstimate)
 {
 
-	boost::shared_lock<boost::shared_mutex> lock = frame->getActiveLock();
+	std::shared_lock<std::shared_timed_mutex> lock = frame->getActiveLock();
 	diverged = false;
 	trackingWasGood = true;
 	affineEstimation_a = 1; affineEstimation_b = 0;

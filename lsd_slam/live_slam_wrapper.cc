@@ -86,7 +86,7 @@ LiveSLAMWrapper::~LiveSLAMWrapper()
 void LiveSLAMWrapper::Loop()
 {
 	while (true) {
-		boost::unique_lock<boost::recursive_mutex> waitLock(imageStream->getBuffer()->getMutex());
+		std::unique_lock<std::recursive_mutex> waitLock(imageStream->getBuffer()->getMutex());
 		while (!fullResetRequested && !(imageStream->getBuffer()->size() > 0)) {
 			notifyCondition.wait(waitLock);
 		}

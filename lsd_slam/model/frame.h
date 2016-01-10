@@ -21,8 +21,8 @@
 #pragma once
 #include "util/sophus_util.h"
 #include "util/settings.h"
-#include <boost/thread/recursive_mutex.hpp>
-#include <boost/thread/shared_mutex.hpp>
+#include <mutex>
+#include <shared_mutex>
 #include "model/frame_pose_struct.h"
 #include "model/frame_memory.h"
 #include "unordered_set"
@@ -137,7 +137,7 @@ public:
 	// shared_lock this as long as any minimizable arrays are being used.
 	// the minimizer will only minimize frames after getting
 	// an exclusive lock on this.
-	inline boost::shared_lock<boost::shared_mutex> getActiveLock()
+	inline std::shared_lock<std::shared_timed_mutex> getActiveLock()
 	{
 		return FrameMemory::getInstance().activateFrame(this);
 	}
@@ -170,7 +170,7 @@ public:
 
 	// Tracking Reference for quick test. Always available, never taken out of memory.
 	// this is used for re-localization and re-Keyframe positioning.
-	boost::mutex permaRef_mutex;
+	std::mutex permaRef_mutex;
 	Eigen::Vector3f* permaRef_posData;	// (x,y,z)
 	Eigen::Vector2f* permaRef_colorAndVarData;	// (I, Var)
 	int permaRefNumPts;
@@ -280,9 +280,9 @@ private:
 
 	// used internally. locked while something is being built, such that no
 	// two threads build anything simultaneously. not locked on require() if nothing is changed.
-	boost::mutex buildMutex;
+	std::mutex buildMutex;
 
-	boost::shared_mutex activeMutex;
+	std::shared_timed_mutex activeMutex;
 	bool isActive;
 
 	/** Releases everything which can be recalculated, but keeps the minimal
@@ -427,7 +427,7 @@ inline bool* Frame::refPixelWasGood()
 {
 	if( data.refPixelWasGood == 0)
 	{
-		boost::unique_lock<boost::mutex> lock2(buildMutex);
+		std::unique_lock<std::mutex> lock2(buildMutex);
 
 		if(data.refPixelWasGood == 0)
 		{

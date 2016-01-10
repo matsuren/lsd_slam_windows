@@ -20,9 +20,11 @@
 
 #pragma once
 #include "util/settings.h"
-#include "boost/thread.hpp"
+#include <thread>
+#include <mutex>
 #include <stdio.h>
 #include <iostream>
+#include <vector>
 #include "util/sophus_util.h"
 
 
@@ -49,13 +51,13 @@ public:
 private:
 	int w, h;
 	Eigen::Matrix3f K;
-	boost::thread relocThreads[RELOCALIZE_THREADS];
+	std::thread relocThreads[RELOCALIZE_THREADS];
 	bool running[RELOCALIZE_THREADS];
 
 	// locking & signalling structures
-	boost::mutex exMutex;
-	boost::condition_variable newCurrentFrameSignal;
-	boost::condition_variable resultReadySignal;
+	std::mutex exMutex;
+	std::condition_variable newCurrentFrameSignal;
+	std::condition_variable resultReadySignal;
 
 	// for rapid-checking
 	std::vector<Frame*> KFForReloc;

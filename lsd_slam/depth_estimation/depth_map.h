@@ -20,6 +20,7 @@
 
 #pragma once
 #include <chrono>
+#include <shared_mutex>
 #include <deque>
 #include "util/eigen_core_include.h"
 #include "opencv2/core/core.hpp"
@@ -112,7 +113,7 @@ private:
 	// these are just copies of the pointers given to this function, for convenience.
 	// these are NOT managed by this object!
 	Frame* activeKeyFrame;
-	boost::shared_lock<boost::shared_mutex> activeKeyFramelock;
+	std::shared_lock<std::shared_timed_mutex> activeKeyFramelock;
 	const float* activeKeyFrameImageData;
 	bool activeKeyFrameIsReactivated;
 

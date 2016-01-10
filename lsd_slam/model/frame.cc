@@ -139,7 +139,7 @@ Frame::~Frame()
 
 void Frame::takeReActivationData(DepthMapPixelHypothesis* depthMap)
 {
-	boost::shared_lock<boost::shared_mutex> lock = getActiveLock();
+	std::shared_lock<std::shared_timed_mutex> lock = getActiveLock();
 
 	if(data.validity_reAct == 0)
 		data.validity_reAct = (unsigned char*) FrameMemory::getInstance().getBuffer(data.width[0]*data.height[0]);
@@ -232,8 +232,8 @@ void Frame::calculateMeanInformation()
 void Frame::setDepth(const DepthMapPixelHypothesis* newDepth)
 {
 
-	boost::shared_lock<boost::shared_mutex> lock = getActiveLock();
-	boost::unique_lock<boost::mutex> lock2(buildMutex);
+	std::shared_lock<std::shared_timed_mutex> lock = getActiveLock();
+	std::unique_lock<std::mutex> lock2(buildMutex);
 
 	if(data.idepth[0] == 0)
 		data.idepth[0] = FrameMemory::getInstance().getFloatBuffer(data.width[0]*data.height[0]);
@@ -277,12 +277,12 @@ void Frame::setDepth(const DepthMapPixelHypothesis* newDepth)
 
 void Frame::setDepthFromGroundTruth(const float* depth, float cov_scale)
 {
-	boost::shared_lock<boost::shared_mutex> lock = getActiveLock();
+	std::shared_lock<std::shared_timed_mutex> lock = getActiveLock();
 	const float* pyrMaxGradient = maxGradients(0);
 
 
 
-	boost::unique_lock<boost::mutex> lock2(buildMutex);
+	std::unique_lock<std::mutex> lock2(buildMutex);
 	if(data.idepth[0] == 0)
 		data.idepth[0] = FrameMemory::getInstance().getFloatBuffer(data.width[0]*data.height[0]);
 	if(data.idepthVar[0] == 0)
@@ -409,7 +409,7 @@ void Frame::release(int dataFlags, bool pyramidsOnly, bool invalidateOnly)
 
 bool Frame::minimizeInMemory()
 {
-	if(activeMutex.timed_lock(boost::posix_time::milliseconds(10)))
+	if(activeMutex.try_lock_for(std::chrono::milliseconds(10)))
 	{
 		buildMutex.lock();
 		if(enablePrintDebugInfo && printMemoryDebugInfo)
@@ -531,7 +531,7 @@ void Frame::buildImage(int level)
 	}
 	
 	require(IMAGE, level - 1);
-	boost::unique_lock<boost::mutex> lock2(buildMutex);
+	std::unique_lock<std::mutex> lock2(buildMutex);
 
 	if(data.imageValid[level])
 		return;
@@ -677,7 +677,7 @@ void Frame::releaseImage(int level)
 void Frame::buildGradients(int level)
 {
 	require(IMAGE, level);
-	boost::unique_lock<boost::mutex> lock2(buildMutex);
+	std::unique_lock<std::mutex> lock2(buildMutex);
 
 	if(data.gradientsValid[level])
 		return;
@@ -724,7 +724,7 @@ void Frame::releaseGradients(int level)
 void Frame::buildMaxGradients(int level)
 {
 	require(GRADIENTS, level);
-	boost::unique_lock<boost::mutex> lock2(buildMutex);
+	std::unique_lock<std::mutex> lock2(buildMutex);
 
 	if(data.maxGradientsValid[level]) return;
 
@@ -820,7 +820,7 @@ void Frame::buildIDepthAndIDepthVar(int level)
 	}
 
 	require(IDEPTH, level - 1);
-	boost::unique_lock<boost::mutex> lock2(buildMutex);
+	std::unique_lock<std::mutex> lock2(buildMutex);
 	
 	if(data.idepthValid[level] && data.idepthVarValid[level])
 		return;
