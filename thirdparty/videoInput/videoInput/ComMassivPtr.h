@@ -48,9 +48,11 @@ public:
 		{
 		//	while(e)
 				e = elements[index]->Release();
-								
+
+#if 0
 			if (e != 0)
 				throw std::exception("Error!! Massive is not empty!!");
+#endif
 		}
 		
 		CoTaskMemFree(elements);
