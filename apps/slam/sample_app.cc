@@ -134,7 +134,7 @@ int main(int argc, char** argv) {
 	videoInput& vInput = videoInput::getInstance();
 
 
-	std::string calib_fn = "C:\\code\\lsd_slam_windows\\data\\out_camera_data.xml";
+	std::string calib_fn = "data\\out_camera_data.xml";
 
 	VideoInputImageStream inputStream(symbolicLink);
 	inputStream.setCalibration(calib_fn);
