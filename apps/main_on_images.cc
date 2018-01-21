@@ -18,12 +18,12 @@
 * along with LSD-SLAM. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "live_slam_wrapper.h"
+#include "lsd_slam/live_slam_wrapper.h"
 
-#include <boost/thread.hpp>
-#include "util/settings.h"
-#include "util/global_funcs.h"
-#include "slam_system.h"
+//#include <boost/thread.hpp>
+#include "lsd_slam/util/settings.h"
+#include "lsd_slam/util/global_funcs.h"
+#include "lsd_slam/slam_system.h"
 
 #include <sstream>
 #include <fstream>
@@ -33,7 +33,7 @@
 //#include "IOWrapper/ROS/ROSOutput3DWrapper.h"
 //#include "IOWrapper/ROS/rosReconfigure.h"
 
-#include "util/undistorter.h"
+#include "lsd_slam/util/undistorter.h"
 //#include <ros/package.h>
 
 #include "opencv2/opencv.hpp"
