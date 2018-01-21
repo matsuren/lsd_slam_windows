@@ -42,7 +42,7 @@ namespace lsd_slam
 #endif
 
 
-SE3Tracker::SE3Tracker(int w, int h, Eigen::Matrix3f K)
+SE3Tracker::SE3Tracker(int w, int h, const Eigen::Matrix3f &K)
 {
 	width = w;
 	height = h;
@@ -449,8 +449,11 @@ SE3 SE3Tracker::trackFrame(
 	}
 
 
-	if(plotTracking)
+	if(plotTracking){
+
 		cv::imshow("TrackingResidual", debugImageResiduals);
+	//Util::displayImage("TrackingResidual", debugImageResiduals, false);
+}
 
 
 	if(enablePrintDebugInfo && printTrackingIterationInfo)

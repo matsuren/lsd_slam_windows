@@ -43,7 +43,7 @@ namespace lsd_slam
 
 
 
-Sim3Tracker::Sim3Tracker(int w, int h, Eigen::Matrix3f K)
+Sim3Tracker::Sim3Tracker(int w, int h, const Eigen::Matrix3f &K)
 {
 	width = w;
 	height = h;

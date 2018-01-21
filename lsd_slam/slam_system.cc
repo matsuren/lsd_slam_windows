@@ -54,8 +54,8 @@
 using namespace lsd_slam;
 
 
-SlamSystem::SlamSystem(int w, int h, Eigen::Matrix3f K, bool enableSLAM)
-: SLAMEnabled(enableSLAM), relocalizer(w,h,K)
+SlamSystem::SlamSystem(int w, int h, const Eigen::Matrix3f &K, bool enableSLAM)
+: SLAMEnabled(enableSLAM), finalized(false), relocalizer(w,h,K)
 {
 	if(w%16 != 0 || h%16!=0)
 	{
@@ -110,7 +110,7 @@ SlamSystem::SlamSystem(int w, int h, Eigen::Matrix3f K, bool enableSLAM)
 
 	keepRunning = true;
 	doFinalOptimization = false;
-	depthMapScreenshotFlag = false;
+	depthMapScreenshotFlag = true;
 	lastTrackingClosenessScore = 0;
 
 	thread_mapping = std::thread(&SlamSystem::mappingThreadLoop, this);
@@ -169,6 +169,9 @@ SlamSystem::~SlamSystem()
 	delete keyFrameGraph;
 
 	FrameMemory::getInstance().releaseBuffes();
+
+
+	Util::closeAllWindows();
 }
 
 void SlamSystem::setVisualization(Output3DWrapper* outputWrapper)
@@ -227,6 +230,8 @@ void SlamSystem::mappingThreadLoop()
 
 void SlamSystem::finalize()
 {
+    finalized = true;
+
 	printf("Finalizing Graph... finding final constraints!!\n");
 
 	lastNumConstraintsAddedOnFullRetrack = 1;
@@ -511,6 +516,7 @@ void SlamSystem::loadNewCurrentKeyframe(Frame* keyframeToLoad)
 
 void SlamSystem::changeKeyframe(bool noCreate, bool force, float maxScore)
 {
+  std::cout << "changeKeyframe" << std::endl;
 	Frame* newReferenceKF=0;
 	std::shared_ptr<Frame> newKeyframeCandidate = latestTrackedFrame;
 	if(doKFReActivation && SLAMEnabled)
@@ -692,8 +698,8 @@ void SlamSystem::debugDisplayDepthMap()
 
 	if(onSceenInfoDisplay)
 		printMessageOnCVImage(map->debugImageDepth, buf1, buf2);
-	if (displayDepthMap)
-		Util::displayImage( "DebugWindow DEPTH", map->debugImageDepth, false );
+
+	outputWrapper->updateImage((unsigned char *)map->debugImageDepth.data);
 
 	int pressedKey = Util::waitKey(1);
 	handleKey(pressedKey);
@@ -1070,8 +1076,8 @@ float SlamSystem::tryTrackSim3(
 
 
 	if (constraintTracker->diverged ||
-		BtoA.scale() > 1 / Sophus::SophusConstants<sophusType>::epsilon() ||
-		BtoA.scale() < Sophus::SophusConstants<sophusType>::epsilon() ||
+		BtoA.scale() > 1 / static_cast<sophusType>(1e-10) ||
+		BtoA.scale() < static_cast<sophusType>(1e-10) ||
 		BtoAInfo(0,0) == 0 ||
 		BtoAInfo(6,6) == 0)
 	{
@@ -1092,8 +1098,8 @@ float SlamSystem::tryTrackSim3(
 
 
 	if (constraintTracker->diverged ||
-		AtoB.scale() > 1 / Sophus::SophusConstants<sophusType>::epsilon() ||
-		AtoB.scale() < Sophus::SophusConstants<sophusType>::epsilon() ||
+		AtoB.scale() > 1 / static_cast<sophusType>(1e-10) ||
+		AtoB.scale() < static_cast<sophusType>(1e-10) ||
 		AtoBInfo(0,0) == 0 ||
 		AtoBInfo(6,6) == 0)
 	{
@@ -1696,6 +1702,16 @@ SE3 SlamSystem::getCurrentPoseEstimate()
 		camToWorld = se3FromSim3(keyFrameGraph->allFramePoses.back()->getCamToWorld());
 	keyFrameGraph->allFramePosesMutex.unlock_shared();
 	return camToWorld;
+}
+
+Sophus::Sim3f SlamSystem::getCurrentPoseEstimateScale()
+{
+    Sophus::Sim3f camToWorld = Sophus::Sim3f();
+    keyFrameGraph->allFramePosesMutex.lock_shared();
+    if(keyFrameGraph->allFramePoses.size() > 0)
+        camToWorld = keyFrameGraph->allFramePoses.back()->getCamToWorld().cast<float>();
+    keyFrameGraph->allFramePosesMutex.unlock_shared();
+    return camToWorld;
 }
 
 std::vector<FramePoseStruct*> SlamSystem::getAllPoses()

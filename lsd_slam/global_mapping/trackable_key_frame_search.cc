@@ -29,7 +29,7 @@
 namespace lsd_slam
 {
 
-TrackableKeyFrameSearch::TrackableKeyFrameSearch(KeyFrameGraph* graph, int w, int h, Eigen::Matrix3f K)
+TrackableKeyFrameSearch::TrackableKeyFrameSearch(KeyFrameGraph* graph, int w, int h, const Eigen::Matrix3f &K)
 : graph(graph)
 {
 	tracker = new SE3Tracker(w,h,K);
@@ -88,7 +88,7 @@ std::vector<TrackableKFStruct> TrackableKeyFrameSearch::findEuclideanOverlapFram
 
 		potentialReferenceFrames.push_back(TrackableKFStruct());
 		potentialReferenceFrames.back().ref = graph->keyframesAll[i];
-		potentialReferenceFrames.back().refToFrame = se3FromSim3(graph->keyframesAll[i]->getScaledCamToWorld().inverse() * frame->getScaledCamToWorld()).inverse();
+    potentialReferenceFrames.back().refToFrame = se3FromSim3(graph->keyframesAll[i]->getScaledCamToWorld().inverse() * frame->getScaledCamToWorld()).inverse();
 		potentialReferenceFrames.back().dist = dNorm2;
 		potentialReferenceFrames.back().angle = dirDotProd;
 	}

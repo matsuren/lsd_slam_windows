@@ -20,9 +20,9 @@
 
 #pragma once
 #include <opencv2/core/core.hpp>
-#include "util/settings.h"
-#include "io_wrapper/timestamped_object.h"
-#include "util/sophus_util.h"
+#include "lsd_slam/util/settings.h"
+#include "lsd_slam/io_wrapper/timestamped_object.h"
+#include "lsd_slam/util/sophus_util.h"
 
 
 

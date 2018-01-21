@@ -19,7 +19,8 @@
 */
 
 #pragma once
-
+#define _USE_MATH_DEFINES
+#include <math.h>
 #include "sophus/sim3.hpp"
 #include "sophus/se3.hpp"
 
@@ -65,12 +66,3 @@ inline SE3 se3FromSim3(const Sim3& sim3)
 
 }
 
-// Extern templates (see SophusUtil.cpp)
-extern template class Eigen::Quaternion<float>;
-extern template class Eigen::Quaternion<double>;
-
-extern template class Sophus::SE3Group<float, 0>;
-extern template class Sophus::SE3Group<double, 0>;
-
-extern template class Sophus::Sim3Group<float, 0>;
-extern template class Sophus::Sim3Group<double, 0>;

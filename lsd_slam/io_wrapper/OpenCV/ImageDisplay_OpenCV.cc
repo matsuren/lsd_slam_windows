@@ -36,7 +36,7 @@ namespace lsd_slam
 namespace Util
 {
 
-	const bool useImageDisplayThread = false;
+	const bool useImageDisplayThread = true;
 
 
 	std::unordered_set<std::string> openWindows;
@@ -46,7 +46,7 @@ namespace Util
 
 	std::thread* imageDisplayThread = 0;
 	std::vector<DisplayImageObject> displayQueue;
-	bool imageThreadKeepRunning = false;
+	bool imageThreadKeepRunning = true;
 
 
 void displayThreadLoop()
@@ -73,6 +73,7 @@ void displayThreadLoop()
 			}
 			cv::imshow(displayQueue.back().name, displayQueue.back().img);
 			displayQueue.pop_back();
+      cv::waitKey(1);
 		}
 	}
 	cv::destroyAllWindows();

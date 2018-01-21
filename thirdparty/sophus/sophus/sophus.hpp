@@ -23,6 +23,9 @@
 #ifndef SOPHUS_HPP
 #define SOPHUS_HPP
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 #include <stdexcept>
 
 #include <Eigen/Eigen>

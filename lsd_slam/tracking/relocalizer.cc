@@ -27,7 +27,7 @@
 namespace lsd_slam
 {
 
-Relocalizer::Relocalizer(int w, int h, Eigen::Matrix3f K)
+Relocalizer::Relocalizer(int w, int h, const Eigen::Matrix3f &K)
 {
 	for (int i=0; i<RELOCALIZE_THREADS; i++)
 		running[i] = false;

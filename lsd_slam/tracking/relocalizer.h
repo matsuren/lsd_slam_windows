@@ -37,7 +37,7 @@ class Sim3Tracker;
 class Relocalizer
 {
 public:
-	Relocalizer(int w, int h, Eigen::Matrix3f K);
+	Relocalizer(int w, int h, const Eigen::Matrix3f &K);
 	~Relocalizer();
 
 	void updateCurrentFrame(std::shared_ptr<Frame> currentFrame);

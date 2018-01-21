@@ -17,6 +17,7 @@
 * You should have received a copy of the GNU General Public License
 * along with LSD-SLAM. If not, see <http://www.gnu.org/licenses/>.
 */
+#define _USE_MATH_DEFINES
 
 #include "sophus/se3.hpp"
 #include "sophus/sim3.hpp"
@@ -32,13 +33,4 @@
 // compile a constructor variant for 4-component vectors, resulting in a
 // static assertion failure.
 
-
-template class Eigen::Quaternion<float>;
-template class Eigen::Quaternion<double>;
-
-template class Sophus::SE3Group<float, 0>;
-template class Sophus::SE3Group<double, 0>;
-
-template class Sophus::Sim3Group<float, 0>;
-template class Sophus::Sim3Group<double, 0>;
 

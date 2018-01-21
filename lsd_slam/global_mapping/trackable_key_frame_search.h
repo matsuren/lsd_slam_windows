@@ -43,8 +43,9 @@ class Frame;
 
 struct TrackableKFStruct
 {
-	Frame* ref;
-	SE3 refToFrame;
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+  SE3 refToFrame;
+  Frame* ref;
 	float dist;
 	float angle;
 };
@@ -58,7 +59,7 @@ class TrackableKeyFrameSearch
 {
 public:
 	/** Constructor. */
-	TrackableKeyFrameSearch(KeyFrameGraph* graph, int w, int h, Eigen::Matrix3f K);
+	TrackableKeyFrameSearch(KeyFrameGraph* graph, int w, int h, const Eigen::Matrix3f &K);
 	~TrackableKeyFrameSearch();
 	
 	/**

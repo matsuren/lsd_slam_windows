@@ -429,6 +429,16 @@ int UndistorterPTAM::getOutputHeight() const
 {
 	return out_height;
 }
+int UndistorterPTAM::getInputWidth() const
+{
+	return in_width;
+}
+
+int UndistorterPTAM::getInputHeight() const
+{
+	return in_height;
+}
+
 
 bool UndistorterPTAM::isValid() const
 {
@@ -586,6 +596,15 @@ int UndistorterOpenCV::getOutputWidth() const
 int UndistorterOpenCV::getOutputHeight() const
 {
 	return out_height;
+}
+int UndistorterOpenCV::getInputWidth() const
+{
+	return in_width;
+}
+
+int UndistorterOpenCV::getInputHeight() const
+{
+	return in_height;
 }
 
 bool UndistorterOpenCV::isValid() const

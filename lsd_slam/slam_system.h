@@ -30,6 +30,8 @@
 #include "io_wrapper/timestamp.h"
 #include "opencv2/core/core.hpp"
 
+#define _USE_MATH_DEFINES
+#include <math.h>
 #include "util/sophus_util.h"
 #include "tracking/relocalizer.h"
 
@@ -68,8 +70,9 @@ public:
 
 	bool trackingIsGood;
 
+	bool finalized;
 
-	SlamSystem(int w, int h, Eigen::Matrix3f K, bool enableSLAM = true);
+	SlamSystem(int w, int h, const Eigen::Matrix3f &K, bool enableSLAM = true);
 	SlamSystem(const SlamSystem&) = delete;
 	SlamSystem& operator=(const SlamSystem&) = delete;
 	~SlamSystem();
@@ -95,6 +98,8 @@ public:
 
 	/** Returns the current pose estimate. */
 	SE3 getCurrentPoseEstimate();
+
+	Sophus::Sim3f getCurrentPoseEstimateScale();
 
 	/** Sets the visualization where point clouds and camera poses will be sent to. */
 	void setVisualization(Output3DWrapper* outputWrapper);
