@@ -264,6 +264,10 @@ int main()
   numFrames = (int)files.size();
 	std::thread lsdThread(run, system, undistorter, outputWrapper, K);
 
+  // fps adjustment
+  const int required_fps = 60; // display refresh rate 60Hz
+  using frames = std::chrono::duration<int64_t, std::ratio<1, required_fps>>;
+  auto next_frame = std::chrono::system_clock::now() + frames{1};
 	while(!pangolin::ShouldQuit())
 	{
 	    if(lsdDone.getValue() && !system->finalized)
@@ -280,6 +284,8 @@ int main()
 	    gui->drawImages();
       CheckGlDieOnError();
 	    gui->postCall();
+      std::this_thread::sleep_until(next_frame);
+      next_frame += frames{1};
 	}
 
 	lsdDone.assignValue(true);
