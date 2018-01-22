@@ -516,7 +516,6 @@ void SlamSystem::loadNewCurrentKeyframe(Frame* keyframeToLoad)
 
 void SlamSystem::changeKeyframe(bool noCreate, bool force, float maxScore)
 {
-  std::cout << "changeKeyframe" << std::endl;
 	Frame* newReferenceKF=0;
 	std::shared_ptr<Frame> newKeyframeCandidate = latestTrackedFrame;
 	if(doKFReActivation && SLAMEnabled)
@@ -700,6 +699,7 @@ void SlamSystem::debugDisplayDepthMap()
 		printMessageOnCVImage(map->debugImageDepth, buf1, buf2);
 
 	outputWrapper->updateImage((unsigned char *)map->debugImageDepth.data);
+  Util::displayImage("Debug Image", map->debugImageDepth);
 
 	int pressedKey = Util::waitKey(1);
 	handleKey(pressedKey);

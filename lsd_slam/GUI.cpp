@@ -31,7 +31,7 @@ GUI::GUI()
 
     // Create Image View in window
     pangolin::Display("Image")
-      .SetBounds(1 / 2.0f, 1.0f, 1 / 2.0f, 1.0, 640.0 / 480)
+      .SetBounds(2 / 3.0f, 1.0f, 1 / 2.0f, 1.0, 640.0 / 480)
       .SetLock(pangolin::LockRight, pangolin::LockTop);
     //pangolin::Display("Image").SetAspect(640.0f / 480.0f);
 
@@ -155,8 +155,7 @@ void GUI::drawKeyframes()
     for(std::map<int, Keyframe *>::iterator i = keyframes.getReference().begin(); i != keyframes.getReference().end(); ++i)
     {
         //Don't render first five, according to original code
-        //if(i->second->initId >= 5)
-        if(i->second->initId >= 2)
+        if(i->second->initId >= 5)
         {
             if(!i->second->hasVbo || i->second->needsUpdate)
             {

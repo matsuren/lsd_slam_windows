@@ -18,11 +18,6 @@
 * along with LSD-SLAM. If not, see <http://www.gnu.org/licenses/>.
 */
 
-//int main(){
-//  std::cout << "AAAAAAAAA";
-//  return 0;
-//}
-
 #include "live_slam_wrapper.h"
 
 #include "util/settings.h"
@@ -273,6 +268,7 @@ int main()
 	    if(lsdDone.getValue() && !system->finalized)
 	    {
 	        system->finalize();
+          break;
 	    }
       CheckGlDieOnError();
 	    gui->preCall();
@@ -287,6 +283,18 @@ int main()
       std::this_thread::sleep_until(next_frame);
       next_frame += frames{1};
 	}
+
+  // display final graph
+  next_frame = std::chrono::system_clock::now() + frames{1};
+  while(!pangolin::ShouldQuit())
+  {
+    gui->preCall();
+    gui->drawKeyframes();
+    gui->drawImages();
+    gui->postCall();
+    std::this_thread::sleep_until(next_frame);
+    next_frame += frames{1};
+  }
 
 	lsdDone.assignValue(true);
 

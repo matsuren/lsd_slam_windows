@@ -48,7 +48,7 @@ Relocalizer::Relocalizer(int w, int h, const Eigen::Matrix3f &K)
 
 Relocalizer::~Relocalizer()
 {
-	stop();
+  if(isRunning) stop();
 }
 
 void Relocalizer::stop()

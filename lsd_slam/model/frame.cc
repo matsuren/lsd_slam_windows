@@ -36,16 +36,15 @@ Frame::Frame(int id, int width, int height, const Eigen::Matrix3f& K, double tim
 	initialize(id, width, height, K, timestamp);
 
 	data.image[0] = FrameMemory::getInstance().getFloatBuffer(data.width[0]*data.height[0]);
-	data.imageRGB[0] = FrameMemory::getInstance().getFloatBuffer(data.width[0]*data.height[0]*3);
-
 	float* maxPt = data.image[0] + data.width[0]*data.height[0];
-	float* maxPtRGB = data.imageRGB[0] + data.width[0]*data.height[0]*3;
+  for(float* pt = data.image[0]; pt < maxPt; pt++)
+  {
+    *pt = *image;
+    image++;
+  }
 
-	for(float* pt = data.image[0]; pt < maxPt; pt++)
-	{
-		*pt = *image;
-		image++;
-	}
+  data.imageRGB[0] = FrameMemory::getInstance().getFloatBuffer(data.width[0] * data.height[0] * 3);
+	float* maxPtRGB = data.imageRGB[0] + data.width[0]*data.height[0]*3;
 	for(float* pt = data.imageRGB[0]; pt < maxPtRGB; pt++)
 	{
 		*pt = *rgbImage / 255.0f;
@@ -90,7 +89,7 @@ Frame::Frame(int id, int width, int height, const Eigen::Matrix3f& K, double tim
 	
 	data.image[0] = FrameMemory::getInstance().getFloatBuffer(data.width[0]*data.height[0]);
 	memcpy(data.image[0], image, data.width[0] * data.height[0] * sizeof(float));
-	data.image[0] = FrameMemory::getInstance().getFloatBuffer(data.width[0] * data.height[0]*3);
+	data.imageRGB[0] = FrameMemory::getInstance().getFloatBuffer(data.width[0] * data.height[0]*3);
 	memcpy(data.imageRGB[0], rgbImage, data.width[0] * data.height[0] * 3 * sizeof(float));
 	data.imageValid[0] = true;
 
@@ -116,6 +115,7 @@ Frame::~Frame()
 	for (int level = 0; level < PYRAMID_LEVELS; ++ level)
 	{
 		FrameMemory::getInstance().returnBuffer(data.image[level]);
+    FrameMemory::getInstance().returnBuffer(data.imageRGB[level]);
 		FrameMemory::getInstance().returnBuffer(reinterpret_cast<float*>(data.gradients[level]));
 		FrameMemory::getInstance().returnBuffer(data.maxGradients[level]);
 		FrameMemory::getInstance().returnBuffer(data.idepth[level]);
