@@ -1,0 +1,22 @@
+ADD_SUBDIRECTORY(pcg)
+ADD_SUBDIRECTORY(dense)
+ADD_SUBDIRECTORY(structure_only)
+
+IF(CSPARSE_FOUND)
+  ADD_SUBDIRECTORY(csparse)
+  ADD_SUBDIRECTORY(slam2d_linear)
+ENDIF()
+set(CHOLMOD_LIBRARIES C:/dev/suitesparse-metis-for-windows/build/install/lib/libcholmod.lib)
+
+message("CHOLMOD_FOUND:${CHOLMOD_FOUND}" )
+message("CHOLMOD_FOUND:${CHOLMOD_INCLUDE_DIR}, ${CHOLMOD_LIBRARIES}")
+IF(CHOLMOD_FOUND)
+  ADD_SUBDIRECTORY(cholmod)
+ENDIF(CHOLMOD_FOUND)
+
+# Sparse Module of Eigen is stable starting from 3.1
+IF (DEFINED EIGEN3_VERSION)
+  IF(${EIGEN3_VERSION} VERSION_GREATER "3.1.0" OR ${EIGEN3_VERSION} VERSION_EQUAL "3.1.0")
+    ADD_SUBDIRECTORY(eigen)
+  ENDIF()
+ENDIF()
